@@ -2,32 +2,31 @@
 #include <stdio.h>
 
 /**
- * _strchr - locates
- * @s: string
- * @c: char
+ * _strncpy - copies str
+ * @dest: destination
+ * @src: source
+ * @n: counter
  *
- * Return: char
+ * Return: int
  */
 
-char *_strchr(char *s, char c)
+char *_strncpy(char *dest, char *src, int n)
 {
 	int i = 0;
 	int j = 0;
 
-	while (*(s + i))
+	while (j + i < n)
 	{
-		i++;
+		if (*(src + j) != '\0')
+		{
+			*(dest + j) = *(src + j);
+			j++;
+		}
+		else
+		{
+			*(dest + j + i) = '\0';
+			i++;
+		}
 	}
-	j = i;
-	i = 0;
-	while (*(s + i) != c && i <= j)
-	{
-		i++;
-	}
-
-
-	if (*(s + i) == c)
-		return (s + i);
-
-	return (NULL);
+	return (dest);
 }
